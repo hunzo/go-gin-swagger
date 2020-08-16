@@ -1,0 +1,51 @@
+definitions:
+  models.BodyUser:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+info:
+  contact: {}
+  license: {}
+paths:
+  /somepost:
+    post:
+      consumes:
+      - application/json
+      description: post user/password
+      parameters:
+      - description: post body
+        in: body
+        name: b
+        required: true
+        schema:
+          $ref: '#/definitions/models.BodyUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.BodyUser'
+      summary: Post User/pass
+  /users/{username}:
+    get:
+      consumes:
+      - application/json
+      description: Search username
+      parameters:
+      - description: test path param
+        in: path
+        name: username
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: search Username
+swagger: "2.0"
